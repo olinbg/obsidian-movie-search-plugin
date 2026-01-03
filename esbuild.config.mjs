@@ -19,7 +19,7 @@ function copyStaticAssets() {
 		fs.mkdirSync(distDir, { recursive: true });
 		fs.copyFileSync(path.resolve("styles.css"), path.join(distDir, "styles.css"));
 		fs.copyFileSync(path.resolve("manifest.json"), path.join(distDir, "manifest.json"));
-		console.log("Copied styles.css and manifest.json to", distDir);
+		console.log("Copied styles.css and manifest.json to ", distDir);
 	} catch (err) {
 		console.error("Failed to copy static assets:", err);
 	}

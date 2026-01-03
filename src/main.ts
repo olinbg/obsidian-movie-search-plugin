@@ -156,7 +156,11 @@ export default class MovieSearchPlugin extends Plugin {
 
 	private async get_file_path_for_(movie: Movie): Promise<string> {
 		const file_name = make_file_name_for_(movie, this.settings.file_name_format);
-		const folder_path = make_folder_path_for_(movie, this.settings.folder);
+
+		// Use the right media type folder (TV or Movie) if set
+		const folder_setting = movie.media_type == "tv" ? this.settings.tv_folder : this.settings.folder;
+		const folder_path = make_folder_path_for_(movie, folder_setting);
+
 		try {
 			await this.app.vault.createFolder(folder_path);
 		} catch (err) {

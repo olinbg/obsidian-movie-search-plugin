@@ -16,6 +16,7 @@ export enum DefaultFrontmatterKeyType {
 
 export interface MovieSearchPluginSettings {
 	folder: string; // new file location
+	tv_folder: string; // TV file location
 	file_name_format: string; // new file name format
 	template_file: string;
 	open_page_on_completion: boolean;
@@ -38,6 +39,7 @@ export interface MovieSearchPluginSettings {
 
 export const DEFAULT_SETTINGS: MovieSearchPluginSettings = {
 	folder: "",
+	tv_folder: "",
 	file_name_format: "",
 	template_file: "",
 	open_page_on_completion: true,
@@ -84,6 +86,22 @@ export class MovieSearchSettingTab extends PluginSettingTab {
 					.setValue(this.plugin.settings.folder)
 					.onChange(new_folder => {
 						this.plugin.settings.folder = new_folder;
+						this.plugin.saveSettings();
+					});
+			});
+		new Setting(containerEl)
+			.setName("New TV file location")
+			.setDesc("New TV notes will be placed here. If blank, use new file location.")
+			.addSearch(cb => {
+				try {
+					new FolderSuggest(this.app, cb.inputEl);
+				} catch {
+					// eslint-disable
+				}
+				cb.setPlaceholder("Example: folder1/folder2")
+					.setValue(this.plugin.settings.tv_folder)
+					.onChange(new_folder => {
+						this.plugin.settings.tv_folder = new_folder;
 						this.plugin.saveSettings();
 					});
 			});

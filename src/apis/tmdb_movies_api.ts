@@ -138,6 +138,7 @@ export class TMDBMoviesAPI implements BaseMoviesAPI {
 				country => `${country.name} (${country.iso_3166_1})`,
 			),
 			release_date: response.release_date || response.first_air_date,
+			release_year: (response.release_date || response.first_air_date || "").slice(0, 4),
 			spoken_languages: response.spoken_languages.map(language => `${language.name} (${language.iso_639_1})`),
 			tagline: response.tagline,
 			title: response.title || response.name,

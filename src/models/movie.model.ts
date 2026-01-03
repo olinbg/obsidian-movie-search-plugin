@@ -28,6 +28,7 @@ export interface Movie {
 	production_companies: string[];
 	production_countries: string[];
 	release_date: string;
+	release_year: string;
 	spoken_languages: string[];
 	tagline: string;
 	title: string;

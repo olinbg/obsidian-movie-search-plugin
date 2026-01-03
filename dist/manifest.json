@@ -1,9 +1,9 @@
 {
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"name": "@Custom - Movie Search",
 	"isDesktopOnly": false,
 	"minAppVersion": "0.15.0",
-	"id": "movie-search",
+	"id": "movie-search-olinbg",
 	"description": "Helps you find movies and create notes.",
 	"author": "olinbg",
 	"authorUrl": "https://olinbg.com"
